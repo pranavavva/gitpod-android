@@ -12,3 +12,12 @@ jobs:
     - uses: actions/checkout@v1
     - name: Build Docker Image
       run: docker build . --file Dockerfile --tag gitpod-android:$(date +%s)
+    - name: Publish Docker Image
+      uses: elgohr/Publish-Docker-Github-Action@2.12
+      with:
+        # The name of the image you would like to push
+        name: pranav8350/gitpod-android
+        # The login username for the registry
+        username: ${{ secrets.DOCKER_USERNAME }}
+        # The login password for the registry
+        password: ${{ secrets.DOCKER_PASSWORD }}
