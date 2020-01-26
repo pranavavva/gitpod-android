@@ -13,6 +13,8 @@ ENV ANDROID_HOME /opt/android-sdk-linux
 
 USER root
 
+ENV ANDROID_HOME /opt/android-sdk-linux
+
 RUN apt update -qq && apt install zip unzip
 
 RUN cd /opt && \
@@ -26,7 +28,6 @@ RUN apt clean -qq
 
 USER gitpod
 
-ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
+ENV PATH ${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:${PATH}
 
-RUN bash -c "source ~/.sdkman/bin/sdkman-init.sh && \
-                sdk install java 8.0.232-open"
+RUN ["/bin/bash", "-c", "source ~/.sdkman/bin/sdkman-init.sh && sdk install java 8.0.232-open"]
