@@ -13,7 +13,7 @@ jobs:
     - name: Build Docker Image
       run: docker build . --file Dockerfile --tag gitpod-android:$(date +%s)
     - name: Publish Docker Image
-      uses: elgohr/Publish-Docker-Github-Action@2.12
+      uses: elgohr/Publish-Docker-Github-Action@v5
       with:
         # The name of the image you would like to push
         name: pranav8350/gitpod-android
